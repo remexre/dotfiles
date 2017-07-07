@@ -1,0 +1,164 @@
+# The modifier, set to windows-key.
+set $mod Mod4
+
+# Global font.
+# font pango:InputMonoNarrow Nerd Font 10
+font pango:PragmataPro Nerd Font 10
+
+# Used for dragging floating windows.
+floating_modifier $mod
+
+# Start a terminal, possibly floating.
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+Return exec i3-sensible-terminal -name floating-terminal
+for_window [title="floating-terminal"] floating enable
+
+# Close the current window.
+bindsym $mod+Shift+q kill
+
+# Change focused window.
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Move focused window to a different workspace.
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Move workspace to a different monitor.
+bindsym $mod+Control+Shift+Left move left
+bindsym $mod+Control+Shift+Right move right
+
+# Horizontal and vertical splits.
+bindsym $mod+h split h
+bindsym $mod+v split v
+
+# Toggle fullscreen mode.
+bindsym $mod+f fullscreen toggle
+
+# Change the layout of a container.
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+# Toggle floating or sticky modes.
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+s sticky toggle
+
+# Focus on the parent container.
+bindsym $mod+a focus parent
+
+# Switch to workspace by number.
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+bindsym $mod+7 workspace 7
+bindsym $mod+8 workspace 8
+bindsym $mod+9 workspace 9
+bindsym $mod+0 workspace 10
+
+# Move window to workspace by number.
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+bindsym $mod+Shift+7 move container to workspace 7
+bindsym $mod+Shift+8 move container to workspace 8
+bindsym $mod+Shift+9 move container to workspace 9
+bindsym $mod+Shift+0 move container to workspace 10
+
+# Reload the configuration file.
+bindsym $mod+Shift+c reload
+# Restart i3.
+bindsym $mod+Shift+r restart
+# Exit i3.
+bindsym $mod+Shift+e exec --no-startup-id "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+# Resize a window.
+mode "resize" {
+	# Shrink or grow window.
+	bindsym Left resize shrink width 10 px or 10 ppt
+	bindsym Down resize grow height 10 px or 10 ppt
+	bindsym Up resize shrink height 10 px or 10 ppt
+	bindsym Right resize grow width 10 px or 10 ppt
+
+	# Exit resize mode.
+	bindsym Return mode "default"
+	bindsym Escape mode "default"
+}
+
+# Enter resize mode.
+bindsym $mod+r mode "resize"
+
+# Start i3bar.
+bar {
+	status_command i3status
+	tray_output primary
+	colors {
+		background         #1e1f29 #1e1f29 #ebece6
+		statusline         #ebece6 #ebece6 #1e1f29
+		focused_workspace  #ebece6 #ebece6 #1e1f29
+		active_workspace   #ebece6 #ebece6 #1e1f29
+		inactive_workspace #1e1f29 #1e1f29 #ebece6
+		urgent_workspace   #1e1f29 #1e1f29 #fc4346
+	}
+}
+
+# Color Scheme
+client.focused          #1e1f29 #1e1f29 #ebece6 #50fb7c   #1e1f29
+client.focused_inactive #1e1f29 #1e1f29 #555555 #50fb7c   #1e1f29
+client.unfocused        #1e1f29 #1e1f29 #555555 #50fb7c   #1e1f29
+client.urgent           #1e1f29 #1e1f29 #fc4346 #50fb7c   #900000
+client.placeholder      #1e1f29 #1e1f29 #ededec #50fb7c   #0c0c0c
+client.background       #1e1f29
+
+# Gaps!
+gaps inner 20
+smart_borders on
+smart_gaps on
+
+# Set up DPI, desktop background, locking, and tap-to-click.
+exec --no-startup-id xrandr --output eDP1 \
+	--dpi 192 \
+	--primary
+exec --no-startup-id feh --bg-fill /usr/share/backgrounds/snazzy_2560_1700.png
+exec --no-startup-id xautolock -time 10 -locker "i3lock -i /usr/share/backgrounds/snazzy_2560_1700.png"
+exec --no-startup-id xinput set-prop 9 274 1
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+# Start the compositor and gestures.
+exec --no-startup-id compton -b
+exec --no-startup-id libinput-gestures-setup start
+
+# Applets and background applications.
+exec --no-startup-id dunst
+exec --no-startup-id kalu
+exec --no-startup-id haguichi --hidden
+exec --no-startup-id nm-applet
+exec --no-startup-id env KEYBASE_START_UI=hideWindow run_keybase
+exec --no-startup-id rescuetime
+exec --no-startup-id udiskie -2at
+
+# Keybindings.
+bindsym $mod+d exec --no-startup-id passmenu
+bindsym $mod+space exec --no-startup-id rofi -show run -levenshtein-sort
+bindsym $mod+Tab exec --no-startup-id rofi -show window -m 0
+bindsym $mod+p exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%F-%T).png -s -c 0.52,0.6,0,1"
+bindsym $mod+shift+p exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%F-%T).png"
+bindsym F6  exec --no-startup-id xbacklight -dec 10
+bindsym F7  exec --no-startup-id xbacklight -inc 10
+bindsym F8  exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym F9  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym F10 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+
+# Make QEMU and VirtualBox always be floating.
+for_window [class="VirtualBox"] floating enable
+for_window [title="QEMU"] floating enable
