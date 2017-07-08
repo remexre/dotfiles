@@ -1,5 +1,5 @@
 [global]
-   font = InputMonoNarrow Nerd Font 20
+   font = InputMonoNarrow Nerd Font 14
     
     # Allow a small subset of html markup:
     #   <b>bold</b>
