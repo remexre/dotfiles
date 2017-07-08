@@ -1,5 +1,5 @@
 ! *.font: xft:InputMonoNarrow Nerd Font:size=11:antialias=true
-*.font: xft:PragmataPro Nerd Font:size=12:antialias=true
+*.font: xft:PragmataPro Nerd Font:size=14:antialias=true
 *.background:  #1e1f29
 *.foreground:  #ebece6
 *.cursorColor: #ebece6

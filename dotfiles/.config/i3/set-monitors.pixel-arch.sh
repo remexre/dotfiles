@@ -1,3 +1,5 @@
 #!/bin/bash
 
-exec xrandr --output eDP1 --dpi 192 --primary
+set -eu
+
+xrandr --output eDP1 --dpi 192 --primary

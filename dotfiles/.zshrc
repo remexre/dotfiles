@@ -37,7 +37,7 @@ command_exists ruby && export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin
 command_exists npm && {
 	export NPM_PACKAGES="${HOME}/.npm-packages";
 	export PATH="${NPM_PACKAGES}/bin:${PATH}";
-	export MANPATH="${NPM_PACKAGES}/share/man:$(manpath)"
+	# export MANPATH="${NPM_PACKAGES}/share/man:$(manpath)";
 };
 
 export GPG_TTY=$(tty);
@@ -51,7 +51,7 @@ codi() {
 		 hi ColorColumn ctermbg=NONE |\
 		 hi VertSplit ctermbg=NONE |\
 		 hi NonText ctermfg=0 |\
-		 Codi $syntax" "$@"
+		 Codi $syntax" "$@";
 };
 
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
