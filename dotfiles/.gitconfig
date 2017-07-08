@@ -10,3 +10,8 @@
 [filter "gpg"]
 	smudge = "gpg --decrypt"
 	clean = "gpg --encrypt --recipient remexre@gmail.com"
+	required = true
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	required = true
