@@ -6,6 +6,10 @@ if [[ -e /sys/devices/virtual/dmi/id/product_name ]]; then
 	fi
 fi
 
+# Start the GNOME Keyring Daemon
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+export GNOME_KEYRING_CONTROL
 export SSH_AUTH_SOCK
-exec i3 | tee -a /tmp/${USER}.$(date +%s).i3.log
+
+# Start i3.
+exec i3
