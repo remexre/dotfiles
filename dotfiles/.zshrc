@@ -6,6 +6,9 @@ plugins=(cargo common-aliases compleat dircycle git git-extras npm pip python re
 command_exists() {
 	command -v ${1} >/dev/null;
 };
+retry() {
+	($@) || retry $@
+};
 
 command_exists nvim && export EDITOR="nvim";
 export GOPATH="${HOME}/go";
