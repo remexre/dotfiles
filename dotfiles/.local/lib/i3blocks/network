@@ -55,13 +55,14 @@ ip = str(run("ifconfig {} | grep inet | awk '{{print $2}}' | head -n 1".format(i
 
 quality = int(run("grep {} /proc/net/wireless | awk '{{print int($4 * -1)}}'".format(iface), shell=True, stdout=PIPE, universal_newlines=True).stdout)
 
-print(ip)
-
 if wireless:
 	network = run(["iwgetid", "-r", iface], stdout=PIPE, universal_newlines=True).stdout[:-1]
 	print("({}% @ {}) {}".format(quality, network, ip))
+	print("({}% @ {}) {}".format(quality, network, ip))
 else:
 	print(ip)
+	print(ip)
+
 
 if quality > 50:
 	print(color_good)
