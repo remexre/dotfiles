@@ -1,0 +1,21 @@
+#!/bin/bash
+
+set -eu
+
+# The colors to use.
+COLOR_GOOD="#50FB7C"
+COLOR_DEGRADED="#F0FB8C"
+COLOR_BAD="#FC4346"
+
+# Get the load average and CPU count.
+LOAD_AVG="$(awk '{print $1}' /proc/loadavg)"
+NUM_CPUS="$(nproc)"
+
+# Print the load average.
+echo "${LOAD_AVG}"
+echo "${LOAD_AVG}"
+
+# Print in color if we're over the limits.
+if [[ "${LOAD_AVG}" -gt "${NUM_CPUS}" ]]; then
+	echo "${COLOR_BAD}"
+fi

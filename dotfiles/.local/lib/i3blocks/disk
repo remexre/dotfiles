@@ -1,0 +1,30 @@
+#!/bin/bash
+
+set -eu
+
+# The colors to use.
+COLOR_GOOD="#50FB7C"
+COLOR_DEGRADED="#F0FB8C"
+COLOR_BAD="#FC4346"
+
+# Get the path.
+MOUNT_PATH="${BLOCK_INSTANCE}"
+
+# Get the disk usage.
+LINE="$(df -hP "${MOUNT_PATH}" | tail -n 1)"
+REMAINING="$(echo "${LINE}" | awk '{print $4}')"
+PERCENT="$(echo "${LINE}" | awk '{print $5}')"
+PERCENT_NUM="${PERCENT:0:-1}"
+
+# Print the amount remaining.
+echo "${PERCENT} (${REMAINING} free)"
+echo "${PERCENT} (${REMAINING} free)"
+
+# Choose a color.
+if [[ "${PERCENT_NUM}" -lt 75 ]]; then
+	echo "${COLOR_GOOD}"
+elif [[ "${PERCENT_NUM}" -lt 85 ]]; then
+	echo "${COLOR_DEGRADED}"
+else
+	echo "${COLOR_BAD}"
+fi

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+set -eu
+
+# The colors to use.
+COLOR_GOOD="#50FB7C"
+COLOR_DEGRADED="#F0FB8C"
+COLOR_BAD="#FC4346"
+
+# Get the VPN interface.
+INTERFACE=${BLOCK_INSTANCE:-tun0}
+
+# Check if it's up.
+if [[ -e "/proc/sys/net/ipv4/conf/${INTERFACE}" ]]; then
+	echo "up"
+	echo "up"
+	echo "${COLOR_GOOD}"
+else
+	echo "down"
+	echo "down"
+	echo "${COLOR_BAD}"
+fi

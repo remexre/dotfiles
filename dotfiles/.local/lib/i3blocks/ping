@@ -1,0 +1,44 @@
+#!/usr/bin/env python
+
+import os
+import subprocess
+
+# The colors to use.
+color_good = "#50FB7C"
+color_degraded = "#F0FB8C"
+color_bad = "#FC4346"
+
+# Get the IP to ping.
+ip = os.getenv("BLOCK_INSTANCE") or "8.8.8.8"
+
+# Perform the ping.
+p = subprocess.run("ping -w 1 -c 1 {}".format(ip), shell=True,
+	stdout=subprocess.PIPE, universal_newlines=True)
+if p.returncode is not 0:
+	print("DOWN")
+	print("DOWN")
+	print(color_bad)
+	exit(33)
+stdout = p.stdout
+
+# Extract the time.
+p = subprocess.Popen(["grep", "-o", "time=.*"], stdin=subprocess.PIPE,
+	stderr=subprocess.PIPE,
+	stdout=subprocess.PIPE, universal_newlines=True)
+time = p.communicate(input=stdout, timeout=1)[0][5:-1]
+assert p.returncode is 0
+
+# Convert the time to microseconds.
+p = subprocess.run(["units", time, "us", "-1", "--compact"],
+	stdout=subprocess.PIPE, universal_newlines=True)
+assert p.returncode is 0
+micros = int(p.stdout)
+
+print(time)
+print(time)
+if micros < 50000:
+	print(color_good)
+elif micros < 500000:
+	print(color_degraded)
+else:
+	print(color_bad)

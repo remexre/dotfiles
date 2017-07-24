@@ -100,7 +100,8 @@ bindsym $mod+r mode "resize"
 
 # Start i3bar.
 bar {
-	status_command i3status
+	status_command i3blocks
+
 	tray_output primary
 	colors {
 		background         #1e1f29 #1e1f29 #ebece6
@@ -153,9 +154,20 @@ bindsym $mod+p exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%F-%T).
 bindsym $mod+shift+p exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%F-%T).png"
 bindsym F6  exec --no-startup-id xbacklight -dec 10
 bindsym F7  exec --no-startup-id xbacklight -inc 10
-bindsym F8  exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym F9  exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym F10 exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym F8  exec --no-startup-id ~/.local/bin/media-helper.sh mute
+bindsym F9  exec --no-startup-id ~/.local/bin/media-helper.sh volume-down
+bindsym F10 exec --no-startup-id ~/.local/bin/media-helper.sh volume-up
+
+# Media keybindings.
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.local/bin/media-helper.sh volume-down
+bindsym XF86AudioMute exec --no-startup-id ~/.local/bin/media-helper.sh mute
+bindsym XF86AudioNext exec ~/.local/bin/media-helper.sh media-next
+bindsym XF86AudioPause exec ~/.local/bin/media-helper.sh media-pause
+bindsym XF86AudioPlay exec ~/.local/bin/media-helper.sh media-play
+bindsym XF86AudioPrev exec ~/.local/bin/media-helper.sh media-previous
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.local/bin/media-helper.sh volume-up
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
 # Make QEMU and VirtualBox always be floating.
 for_window [class="VirtualBox"] floating enable

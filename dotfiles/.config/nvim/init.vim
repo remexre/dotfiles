@@ -66,6 +66,7 @@ noremap <C-I> :NERDTreeToggle<CR>
 
 map <F1> :bp<CR>
 map <F2> :bn<CR>
+map q <Nop>
 
 set background=dark
 set clipboard=unnamedplus
@@ -83,8 +84,13 @@ set showmatch
 set showmode
 set tabstop=4
 
-colorscheme Benokai
+" colorscheme Benokai
 colorscheme default
+
+if has("gui")
+	set guifont=Source\ Code\ Pro\ 14
+	colorscheme lightcolors
+endif
 
 if executable("rg")
 	set grepprg=rg\ --vimgrep\ --no-heading

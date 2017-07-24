@@ -1,0 +1,36 @@
+#!/bin/bash
+
+set -eu
+
+# The colors to use.
+COLOR_GOOD="#50FB7C"
+COLOR_DEGRADED="#F0FB8C"
+COLOR_BAD="#FC4346"
+
+DEVICE="/sys/class/power_supply/${BLOCK_INSTANCE}"
+
+if [[ ! -f "${DEVICE}/charge_now" ]]; then
+	exit
+fi
+
+NOW="$(< "${DEVICE}/charge_now")"
+FULL="$(< "${DEVICE}/charge_full")"
+PERCENT=$(( 100 * NOW / FULL ))
+
+STATUS="$(< "${DEVICE}/status")"
+if [[ "${STATUS}" = "Charging" ]]; then
+	STATUS="CHR"
+elif [[ "${STATUS}" = "Discharging" ]]; then
+	STATUS="BAT"
+fi
+
+echo "${STATUS}: ${PERCENT}%"
+echo "${STATUS}: ${PERCENT}%"
+
+if [[ "${PERCENT}" -ge 50 ]]; then
+	echo "${COLOR_GOOD}"
+elif [[ "${PERCENT}" -ge 25 || "${STATUS}" = "CHR" ]]; then
+	echo "${COLOR_DEGRADED}"
+else
+	echo "${COLOR_BAD}"
+fi
