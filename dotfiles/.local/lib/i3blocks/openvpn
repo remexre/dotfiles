@@ -12,11 +12,11 @@ INTERFACE=${BLOCK_INSTANCE:-tun0}
 
 # Check if it's up.
 if [[ -e "/proc/sys/net/ipv4/conf/${INTERFACE}" ]]; then
-	echo "up"
-	echo "up"
-	echo "${COLOR_GOOD}"
+    echo "up"
+    echo "up"
+    echo "${COLOR_GOOD}"
 else
-	echo "down"
-	echo "down"
-	echo "${COLOR_BAD}"
+    echo "down"
+    echo "down"
+    echo "${COLOR_BAD}"
 fi

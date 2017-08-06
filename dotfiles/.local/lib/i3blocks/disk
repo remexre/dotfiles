@@ -22,9 +22,9 @@ echo "${PERCENT} (${REMAINING} free)"
 
 # Choose a color.
 if [[ "${PERCENT_NUM}" -lt 75 ]]; then
-	echo "${COLOR_GOOD}"
+    echo "${COLOR_GOOD}"
 elif [[ "${PERCENT_NUM}" -lt 85 ]]; then
-	echo "${COLOR_DEGRADED}"
+    echo "${COLOR_DEGRADED}"
 else
-	echo "${COLOR_BAD}"
+    echo "${COLOR_BAD}"
 fi

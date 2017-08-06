@@ -17,5 +17,5 @@ echo "${LOAD_AVG}"
 
 # Print in color if we're over the limits.
 if [[ "${LOAD_AVG}" -gt "${NUM_CPUS}" ]]; then
-	echo "${COLOR_BAD}"
+    echo "${COLOR_BAD}"
 fi

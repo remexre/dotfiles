@@ -10,63 +10,62 @@ color_degraded = "#F0FB8C"
 color_bad = "#FC4346"
 
 def devices():
-	return listdir("/sys/class/net")
+    return listdir("/sys/class/net")
 
 def first_ethernet():
-	ds = list(filter(lambda d: d[0] == "e", devices()))
-	if len(ds) == 0:
-		return None
-	return ds[0]
+    ds = list(filter(lambda d: d[0] == "e", devices()))
+    if len(ds) == 0:
+        return None
+    return ds[0]
 
 def first_wifi():
-	ds = list(filter(lambda d: d[0] == "w", devices()))
-	if len(ds) == 0:
-		return None
-	return ds[0]
+    ds = list(filter(lambda d: d[0] == "w", devices()))
+    if len(ds) == 0:
+        return None
+    return ds[0]
 
 def read(path):
-	with open(path) as f:
-		return f.read()
+    with open(path) as f:
+        return f.read()
 
 iface = getenv("BLOCK_INSTANCE")
 
 if iface == "wifi":
-	iface = first_wifi()
+    iface = first_wifi()
 elif iface == "ethernet":
-	iface = first_ethernet()
+    iface = first_ethernet()
 
 if iface is None:
-	exit()
+    exit()
 
 path = "/sys/class/net/" + iface
 if not exists(path):
-	exit()
+    exit()
 
 wireless = exists(path + "/wireless")
 
 if read(path + "/operstate") == "down":
-	quality = 0
+    quality = 0
 elif not wireless:
-	quality = 100
+    quality = 100
 else:
-	quality = "TODO"
+    quality = "TODO"
 
 ip = str(run("ifconfig {} | grep inet | awk '{{print $2}}' | head -n 1".format(iface), shell=True, stdout=PIPE, universal_newlines=True).stdout)[:-1]
 
-quality = int(run("grep {} /proc/net/wireless | awk '{{print int($4 * -1)}}'".format(iface), shell=True, stdout=PIPE, universal_newlines=True).stdout)
-
 if wireless:
-	network = run(["iwgetid", "-r", iface], stdout=PIPE, universal_newlines=True).stdout[:-1]
-	print("({}% @ {}) {}".format(quality, network, ip))
-	print("({}% @ {}) {}".format(quality, network, ip))
+    quality = int(run("grep {} /proc/net/wireless | awk '{{print int($4 * -1)}}'".format(iface), shell=True, stdout=PIPE, universal_newlines=True).stdout)
+    network = run(["iwgetid", "-r", iface], stdout=PIPE, universal_newlines=True).stdout[:-1]
+    print("({}% @ {}) {}".format(quality, network, ip))
+    print("({}% @ {}) {}".format(quality, network, ip))
 else:
-	print(ip)
-	print(ip)
+    print(ip)
+    print(ip)
 
 
 if quality > 50:
-	print(color_good)
+    print(color_good)
 elif quality > 25:
-	print(color_degraded)
+    print(color_degraded)
 else:
-	print(color_bad)
+    print(color_bad)
