@@ -59,14 +59,16 @@ let g:LanguageClient_serverCommands = {
 	\ }
 let g:markdown_fold_style = 'nested'
 
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-noremap <C-I> :NERDTreeToggle<CR>
+noremap <tab> :NERDTreeToggle<cr>
 
-map <F1> :bp<CR>
-map <F2> :bn<CR>
-map q <Nop>
+inoremap <f1> <c-o>:bp<cr>
+nnoremap <f1> :bp<cr>
+inoremap <f2> <c-o>:bn<cr>
+nnoremap <f2> :bn<cr>
+nnoremap <leader><leader> :w<cr>
+inoremap <leader><leader> <c-o>:w<cr>
+
+nmap q <nop>
 
 set background=dark
 set clipboard=unnamedplus
@@ -130,6 +132,3 @@ augroup SALTPACK
 augroup end
 
 :set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-
-nnoremap <leader><leader> :w<cr>
-inoremap <leader><leader> <c-o>:w<cr>
