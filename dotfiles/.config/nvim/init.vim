@@ -67,6 +67,8 @@ inoremap <f2> <c-o>:bn<cr>
 nnoremap <f2> :bn<cr>
 nnoremap <leader><leader> :w<cr>
 inoremap <leader><leader> <c-o>:w<cr>
+nnoremap <leader>x :wq<cr>
+inoremap <leader>x <c-o>:wq<cr>
 
 nmap q <nop>
 
