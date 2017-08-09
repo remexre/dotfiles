@@ -130,3 +130,6 @@ augroup SALTPACK
 augroup end
 
 :set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+
+nnoremap <leader><leader> :w<cr>
+inoremap <leader><leader> <c-o>:w<cr>
