@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -eu
+
+if [[ "${#}" -lt 1 || "${#}" -gt 2 ]]; then
+    echo "Usage: umn-print DEST [FILE]" >&2
+	exit 1
+fi
+
+if [[ "${2:--}" = "-" ]]; then
+	FILE="$(mktemp)"
+	TEMP=1
+
+	cat - > "${FILE}"
+else
+	FILE="${2}"
+	TEMP=0
+fi
+
+REMOTE_FILE="$(ssh "${1}" mktemp --suffix .pdf)"
+scp "${FILE}" "${1}:${REMOTE_FILE}"
+ssh "${1}" lp "${REMOTE_FILE}"
+ssh "${1}" rm "${REMOTE_FILE}"
+
+if [[ "${TEMP}" -ne 0 ]]; then
+	rm "${FILE}"
+fi
