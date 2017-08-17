@@ -14,7 +14,6 @@ if dein#load_state(expand('~/.config/nvim/'))
 	call dein#add('cespare/vim-toml')
 	call dein#add('ctrlpvim/ctrlp.vim')
 	call dein#add('davidbeckingsale/writegood.vim')
-	call dein#add('enomsg/vim-haskellConcealPlus')
 	call dein#add('fatih/vim-go')
 	call dein#add('flazz/vim-colorschemes')
 	call dein#add('jamessan/vim-gnupg')
@@ -36,6 +35,7 @@ if dein#load_state(expand('~/.config/nvim/'))
 	call dein#add('tpope/vim-fugitive')
 	call dein#add('vim-airline/vim-airline')
 	call dein#add('vim-airline/vim-airline-themes')
+	call dein#add('vim-latex/vim-latex')
 	call dein#add('vim-scripts/alex.vim')
 	call dein#add('wakatime/vim-wakatime')
 	call dein#add('vim-scripts/happy.vim')
@@ -58,6 +58,7 @@ let g:LanguageClient_serverCommands = {
 	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
 	\ }
 let g:markdown_fold_style = 'nested'
+let g:tex_flavor='latex'
 
 noremap <tab> :NERDTreeToggle<cr>
 
@@ -90,7 +91,7 @@ set tabstop=4
 colorscheme default
 
 if has("gui")
-	set guifont=Source\ Code\ Pro\ 14
+	set guifont=PT\ Mono\ Nerd\ Font\ 14
 	colorscheme lightcolors
 endif
 
