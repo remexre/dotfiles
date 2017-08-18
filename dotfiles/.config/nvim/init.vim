@@ -13,6 +13,7 @@ if dein#load_state(expand('~/.config/nvim/'))
 	call dein#add('autozimu/LanguageClient-neovim')
 	call dein#add('cespare/vim-toml')
 	call dein#add('ctrlpvim/ctrlp.vim')
+	call dein#add('dag/vim2hs')
 	call dein#add('davidbeckingsale/writegood.vim')
 	call dein#add('fatih/vim-go')
 	call dein#add('flazz/vim-colorschemes')
@@ -53,6 +54,7 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
 let g:deoplete#enable_at_startup = 1
+let g:haskell_conceal = 0
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
 	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
