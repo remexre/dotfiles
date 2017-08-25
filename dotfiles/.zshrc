@@ -12,6 +12,7 @@ retry() {
 
 command_exists nvim && export EDITOR="nvim";
 export GOPATH="${HOME}/go";
+export OFTLISP_HOME="${HOME}/oftlisp";
 export PATH="${HOME}/bin:${HOME}/.cargo/bin:${HOME}/.local/bin:${GOPATH}/bin:/usr/local/bin:/usr/bin:/bin";
 export RUST_SRC_PATH="${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src";
 

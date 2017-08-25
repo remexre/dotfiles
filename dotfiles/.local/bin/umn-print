@@ -2,10 +2,30 @@
 
 set -eu
 
-if [[ "${#}" -lt 1 || "${#}" -gt 2 ]]; then
-    echo "Usage: umn-print DEST [FILE]" >&2
+usage() {
+    echo "Usage: umn-print acm  FILE" >&2
+    echo "       umn-print kona FILE" >&2
 	exit 1
+}
+
+if [[ "${#}" -ne 2 ]]; then
+	usage
 fi
+
+case "${1}" in
+	acm)
+		echo TODO PUT IN ACM PRINTER
+		exit 2
+		REMOTE="clubby.acm.umn.edu"
+		;;
+	kona)
+		PRINTER="p6-204"
+		REMOTE="cs-kona.cs.umn.edu"
+		;;
+	*)
+		usage
+		;;
+esac
 
 if [[ "${2:--}" = "-" ]]; then
 	FILE="$(mktemp)"
@@ -17,10 +37,10 @@ else
 	TEMP=0
 fi
 
-REMOTE_FILE="$(ssh "${1}" mktemp --suffix .pdf)"
-scp "${FILE}" "${1}:${REMOTE_FILE}"
-ssh "${1}" lp "${REMOTE_FILE}"
-ssh "${1}" rm "${REMOTE_FILE}"
+REMOTE_FILE="$(ssh "${REMOTE}" mktemp --suffix .pdf)"
+scp "${FILE}" "${REMOTE}:${REMOTE_FILE}"
+ssh "${REMOTE}" lp -d "${PRINTER}" "${REMOTE_FILE}"
+ssh "${REMOTE}" rm "${REMOTE_FILE}"
 
 if [[ "${TEMP}" -ne 0 ]]; then
 	rm "${FILE}"
