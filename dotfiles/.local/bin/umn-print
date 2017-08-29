@@ -14,8 +14,7 @@ fi
 
 case "${1}" in
 	acm)
-		echo TODO PUT IN ACM PRINTER
-		exit 2
+		PRINTER="Canon-Canon-MF4800-Series"
 		REMOTE="clubby.acm.umn.edu"
 		;;
 	kona)
