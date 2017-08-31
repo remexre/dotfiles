@@ -14,8 +14,8 @@ fi
 
 case "${1}" in
 	acm)
-		PRINTER="Canon-Canon-MF4800-Series"
-		REMOTE="clubby.acm.umn.edu"
+		PRINTER="ACM"
+		REMOTE="acm.umn.edu"
 		;;
 	kona)
 		PRINTER="p6-204"

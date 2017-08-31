@@ -172,3 +172,6 @@ bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 # Make QEMU and VirtualBox always be floating.
 for_window [class="VirtualBox"] floating enable
 for_window [title="QEMU"] floating enable
+
+# Play Akshay Videos
+bindsym XF86Tools exec mplayer ~/www/tmp/VID_20170708_020203.mp4 ~/www/tmp/VID_20170708_020444.mp4
