@@ -26,6 +26,7 @@ if dein#load_state(expand('~/.config/nvim/'))
 	call dein#add('metakirby5/codi.vim')
 	call dein#add('mhinz/vim-startify')
 	call dein#add('nelstrom/vim-markdown-folding')
+	call dein#add('oftlisp/vim-oftlisp')
 	call dein#add('pangloss/vim-javascript')
 	call dein#add('purescript-contrib/purescript-vim')
 	call dein#add('reedes/vim-pencil')
@@ -66,12 +67,12 @@ let g:tex_flavor='latex'
 
 noremap <tab> :NERDTreeToggle<cr>
 
-inoremap <f1> <c-o>:bp<cr>
+inoremap <f1> <esc>:bp<cr>
 nnoremap <f1> :bp<cr>
-inoremap <f2> <c-o>:bn<cr>
+inoremap <f2> <esc>:bn<cr>
 nnoremap <f2> :bn<cr>
 nnoremap <leader><leader> :w<cr>
-inoremap <leader><leader> <c-o>:w<cr>
+inoremap <leader><leader> <esc>:w<cr>
 
 nmap q <nop>
 
@@ -91,8 +92,8 @@ set showmatch
 set showmode
 set tabstop=4
 
-" colorscheme Benokai
-colorscheme default
+colorscheme Benokai
+" colorscheme default
 
 if has("gui")
 	set guifont=PT\ Mono\ Nerd\ Font\ 14

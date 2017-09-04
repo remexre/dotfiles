@@ -175,3 +175,4 @@ for_window [title="QEMU"] floating enable
 
 # Play Akshay Videos
 bindsym XF86Tools exec mplayer ~/www/tmp/VID_20170708_020203.mp4 ~/www/tmp/VID_20170708_020444.mp4
+bindsym Shift+XF86Tools exec mkchromecast --video --source-url https://home.remexre.xyz/~nathan/tmp/VID_20170708_020203.mp4
