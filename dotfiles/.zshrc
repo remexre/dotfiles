@@ -11,10 +11,6 @@ retry() {
 };
 
 command_exists nvim && export EDITOR="nvim";
-export GOPATH="${HOME}/go";
-export OFTLISP_HOME="${HOME}/oftlisp";
-export PATH="${HOME}/bin:${HOME}/.cargo/bin:${HOME}/.local/bin:${GOPATH}/bin:/usr/local/bin:/usr/bin:/bin";
-export RUST_SRC_PATH="${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src";
 
 if [[ -d ~/.zfunc ]]; then
 	fpath+=~/.zfunc
@@ -37,34 +33,10 @@ alias la="ls -la";
 alias lh="ls -lh";
 alias ll="ls -l";
 
-if [[ -e ${HOME}/.opam/opam-init/init.zsh ]]; then
-	. ${HOME}/.opam/opam-init/init.zsh >/dev/null 2>/dev/null || true
-fi;
-
-command_exists ruby && export PATH="$(ruby -rubygems -e "puts Gem.user_dir")/bin:${PATH}";
-
 command_exists npm && {
-	export NPM_PACKAGES="${HOME}/.npm-packages";
-	export PATH="${NPM_PACKAGES}/bin:${PATH}";
-	export MANPATH="${NPM_PACKAGES}/share/man:${MANPATH:-$(manpath)}";
 };
 
 export GPG_TTY=$(tty);
 
-codi() {
-	local syntax="${1:-python}";
-	shift;
-	nvim -c \
-		"let g:startify_disable_at_vimenter = 1 |\
-		 set bt=nofile ls=0 noru nonu nornu |\
-		 hi ColorColumn ctermbg=NONE |\
-		 hi VertSplit ctermbg=NONE |\
-		 hi NonText ctermfg=0 |\
-		 Codi $syntax" "$@";
-};
-
 [ -f /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 [ -f /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ] && source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# added by travis gem
-[ -f /home/nathan/.travis/travis.sh ] && source /home/nathan/.travis/travis.sh

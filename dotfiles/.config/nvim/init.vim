@@ -1,52 +1,42 @@
-if &compatible
-	set nocompatible
-endif
+call plug#begin('~/.local/share/nvim/plugged')
 
-set runtimepath+=~/.config/nvim/repos/github.com/Shougo/dein.vim
+Plug 'Shougo/denite.nvim'
+Plug 'Shougo/deoplete.nvim'
+Plug 'autozimu/LanguageClient-neovim'
+Plug 'cespare/vim-toml'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'dag/vim2hs'
+Plug 'davidbeckingsale/writegood.vim'
+Plug 'fatih/vim-go'
+Plug 'flazz/vim-colorschemes'
+Plug 'jamessan/vim-gnupg'
+Plug 'junegunn/fzf'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+Plug 'kchmck/vim-coffee-script'
+Plug 'kovisoft/slimv'
+Plug 'metakirby5/codi.vim'
+Plug 'mhinz/vim-startify'
+Plug 'nelstrom/vim-markdown-folding'
+Plug 'oftlisp/vim-oftlisp'
+Plug 'pangloss/vim-javascript'
+Plug 'purescript-contrib/purescript-vim'
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-wordy'
+Plug 'rust-lang/rust.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-latex/vim-latex'
+Plug 'vim-scripts/alex.vim'
+Plug 'wakatime/vim-wakatime'
+Plug 'vim-scripts/happy.vim'
 
-if dein#load_state(expand('~/.config/nvim/'))
-	call dein#begin(expand('~/.config/nvim/'))
-
-	call dein#add('~/.config/nvim/repos/github.com/Shougo/dein.vim')
-	call dein#add('Shougo/denite.nvim')
-	call dein#add('Shougo/deoplete.nvim')
-	call dein#add('autozimu/LanguageClient-neovim')
-	call dein#add('cespare/vim-toml')
-	call dein#add('ctrlpvim/ctrlp.vim')
-	call dein#add('dag/vim2hs')
-	call dein#add('davidbeckingsale/writegood.vim')
-	call dein#add('fatih/vim-go')
-	call dein#add('flazz/vim-colorschemes')
-	call dein#add('jamessan/vim-gnupg')
-	call dein#add('junegunn/fzf')
-	call dein#add('junegunn/goyo.vim')
-	call dein#add('junegunn/limelight.vim')
-	call dein#add('kchmck/vim-coffee-script')
-	call dein#add('kovisoft/slimv')
-	call dein#add('metakirby5/codi.vim')
-	call dein#add('mhinz/vim-startify')
-	call dein#add('nelstrom/vim-markdown-folding')
-	call dein#add('oftlisp/vim-oftlisp')
-	call dein#add('pangloss/vim-javascript')
-	call dein#add('purescript-contrib/purescript-vim')
-	call dein#add('reedes/vim-pencil')
-	call dein#add('reedes/vim-wordy')
-	call dein#add('rust-lang/rust.vim')
-	call dein#add('ryanoasis/vim-devicons')
-	call dein#add('scrooloose/nerdcommenter')
-	call dein#add('scrooloose/nerdtree')
-	call dein#add('terryma/vim-multiple-cursors')
-	call dein#add('tpope/vim-fugitive')
-	call dein#add('vim-airline/vim-airline')
-	call dein#add('vim-airline/vim-airline-themes')
-	call dein#add('vim-latex/vim-latex')
-	call dein#add('vim-scripts/alex.vim')
-	call dein#add('wakatime/vim-wakatime')
-	call dein#add('vim-scripts/happy.vim')
-
-	call dein#end()
-	call dein#save_state()
-endif
+call plug#end()
 
 filetype plugin indent on
 syntax enable
@@ -73,6 +63,7 @@ inoremap <f2> <esc>:bn<cr>
 nnoremap <f2> :bn<cr>
 nnoremap <leader><leader> :w<cr>
 inoremap <leader><leader> <esc>:w<cr>
+vnoremap <expr> // 'y/\V'.escape(@",'\').'<cr>'
 
 nmap q <nop>
 
@@ -92,8 +83,8 @@ set showmatch
 set showmode
 set tabstop=4
 
-colorscheme Benokai
-" colorscheme default
+" colorscheme Benokai
+colorscheme default
 
 if has("gui")
 	set guifont=PT\ Mono\ Nerd\ Font\ 14
