@@ -1,40 +1,38 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'Shougo/denite.nvim'
-Plug 'Shougo/deoplete.nvim'
-Plug 'autozimu/LanguageClient-neovim'
-Plug 'cespare/vim-toml'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'dag/vim2hs'
+Plug 'dag/vim2hs', { 'for': 'haskell' }
 Plug 'davidbeckingsale/writegood.vim'
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'flazz/vim-colorschemes'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
-Plug 'kchmck/vim-coffee-script'
-Plug 'kovisoft/slimv'
+Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
+Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
+Plug 'kchmck/vim-coffee-script', { 'for': 'coffeescript' }
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-startify'
-Plug 'nelstrom/vim-markdown-folding'
-Plug 'oftlisp/vim-oftlisp'
-Plug 'pangloss/vim-javascript'
-Plug 'purescript-contrib/purescript-vim'
+Plug 'nelstrom/vim-markdown-folding', { 'for': 'markdown' }
+Plug 'oftlisp/vim-oftlisp', { 'for': 'oftlisp' }
+Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'purescript-contrib/purescript-vim', { 'for': 'purescript' }
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim', { 'for': 'rust' }
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
-Plug 'scrooloose/nerdtree'
-Plug 'terryma/vim-multiple-cursors'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'vim-latex/vim-latex'
-Plug 'vim-scripts/alex.vim'
+Plug 'vim-latex/vim-latex', { 'for': 'latex' }
+Plug 'vim-scripts/alex.vim', { 'for': 'alex' }
+Plug 'vim-scripts/happy.vim', { 'for': 'happy' }
 Plug 'wakatime/vim-wakatime'
-Plug 'vim-scripts/happy.vim'
 
 call plug#end()
 
@@ -70,7 +68,7 @@ nmap q <nop>
 set background=dark
 set clipboard=unnamedplus
 set foldmethod=syntax
-set foldnestmax=2
+set foldnestmax=1
 set hidden
 set modeline
 set mouse=a
