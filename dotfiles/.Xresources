@@ -1,6 +1,18 @@
-! *.font: xft:InputMonoNarrow Nerd Font:size=11:antialias=true
-*.font: xft:PragmataPro Nerd Font:size=14:antialias=true
-! *.font: xft:PT Mono Nerd Font:size=14:antialias=true,xft:PragmataPro Nerd Font:size=14:antialias=true
+*.font: xft:Go Mono Nerd Font:pixelsize=28:antialias=true,xft:PragmataPro Nerd Font:pixelsize=28:antialias=true
+*.boldFont: xft:Go Mono Nerd Font:pixelsize=28:antialias=true,xft:PragmataPro Nerd Font:pixelsize=28:antialias=true
+*.italicFont: xft:Go Mono Nerd Font:pixelsize=28:antialias=true,xft:PragmataPro Nerd Font:pixelsize=28:antialias=true
+*.boldItalicFont: xft:Go Mono Nerd Font:pixelsize=28:antialias=true,xft:PragmataPro Nerd Font:pixelsize=28:antialias=true
+
+! *.font: xft:InputMonoNarrow Nerd Font:pixelsize=32:antialias=true,xft:PragmataPro Nerd Font:pixelsize=32:antialias=true
+! *.boldFont: xft:InputMonoNarrow Nerd Font:pixelsize=32:antialias=true,xft:PragmataPro Nerd Font:pixelsize=32:antialias=true
+! *.italicFont: xft:InputMonoNarrow Nerd Font:pixelsize=32:antialias=true,xft:PragmataPro Nerd Font:pixelsize=32:antialias=true
+! *.boldItalicFont: xft:InputMonoNarrow Nerd Font:pixelsize=32:antialias=true,xft:PragmataPro Nerd Font:pixelsize=32:antialias=true
+
+! *.font: xft:PragmataPro Nerd Font:pixelsize=32:antialias=true
+! *.boldFont: xft:PragmataPro Nerd Font:pixelsize=32:antialias=true
+! *.italicFont: xft:PragmataPro Nerd Font:pixelsize=32:antialias=true
+! *.boldItalicFont: xft:PragmataPro Nerd Font:pixelsize=32:antialias=true
+
 *.background:  #1e1f29
 *.foreground:  #ebece6
 *.cursorColor: #ebece6
@@ -26,12 +38,12 @@ rofi.color-window: argb:cf1e1f29, #1e1f29, #000000
 rofi.color-normal: argb:00000000, #ebece6, argb:00000000, argb:cfebece6, #1e1f29
 rofi.color-active: argb:00000000, #49baff, argb:00000000, argb:cf49baff, #1e1f29
 rofi.color-urgent: argb:00000000, #fc4346, argb:00000000, argb:cffc4346, #1e1f29
-! rofi.font: InputMonoNarrow Nerd Font 16
 rofi.font: PragmataPro Nerd Font 16
 rofi.ssh-client: mosh
 
 URxvt.background: [90]#1e1f29
 URxvt.depth: 32
+URxvt.perl-ext-common: font-size
 URxvt.saveLines: 1000000
 URxvt.scrollBar: false
 URxvt.scrollTtyKeypress: true

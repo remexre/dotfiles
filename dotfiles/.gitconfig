@@ -4,7 +4,8 @@
 	default = simple
 [user]
 	email = remexre@gmail.com
-	name = Nathaniel Ringo
+	name = "Nathan Ringo"
+	signingkey = "6EB18AF4942ED65387ECCA24267FACC234D3EC3E"
 [commit]
 	gpgsign = true
 [filter "gpg"]

@@ -12,4 +12,5 @@ export GNOME_KEYRING_CONTROL
 export SSH_AUTH_SOCK
 
 # Start i3.
-exec i3
+# exec i3
+exec xfce4-session

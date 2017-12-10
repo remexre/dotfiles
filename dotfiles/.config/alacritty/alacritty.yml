@@ -1,49 +1,67 @@
 env:
   TERM: xterm-256color
 
-dpi:
-  x: 96.0
-  y: 96.0
+dpi: 96.0
+# dpi: 192.0
 
 tabspaces: 8
 
 font:
   normal:
-    family: PragmataPro
+    family: "Go Mono Nerd Font"
   bold:
-    family: PragmataPro
+    family: "Go Mono Nerd Font"
   italic:
-    family: PragmataPro
-  size: 14.0
+    family: "Go Mono Nerd Font"
+#  normal:
+#    family: "InputMonoNarrow Nerd Font"
+#  bold:
+#    family: "InputMonoNarrow Nerd Font"
+#  italic:
+#    family: "InputMonoNarrow Nerd Font"
+#  normal:
+#    family: "PragmataPro Nerd Font"
+#  bold:
+#    family: "PragmataPro Nerd Font"
+#  italic:
+#    family: "PragmataPro Nerd Font"
+  size: 24.0
+# size: 12.0
   offset:
-    x: 0.0
+    x: -22.0
     y: 0.0
 
 colors:
   primary:
-    background: '0x1e1f29'
-    foreground: '0xebece6'
+    background: "0x1e1f29"
+    foreground: "0xebece6"
   cursor:
-    text: '0x1e1f29'
-    cursor: '0xebece6'
+    text: "0x1e1f29"
+    cursor: "0xebece6"
   normal:
-    black:   '0x000000'
-    red:     '0xfc4346'
-    green:   '0x50fb7c'
-    yellow:  '0xf0fb8c'
-    blue:    '0x49baff'
-    magenta: '0xfc4cb4'
-    cyan:    '0x8be9fe'
-    white:   '0xededec'
+    black:   "0x000000"
+    red:     "0xfc4346"
+    green:   "0x50fb7c"
+    yellow:  "0xf0fb8c"
+    blue:    "0x49baff"
+    magenta: "0xfc4cb4"
+    cyan:    "0x8be9fe"
+    white:   "0xededec"
   bright:
-    black:   '0x000000'
-    red:     '0xfc4346'
-    green:   '0x50fb7c'
-    yellow:  '0xf0fb8c'
-    blue:    '0x49baff'
-    magenta: '0xfc4cb4'
-    cyan:    '0x8be9fe'
-    white:   '0xededec'
+    black:   "0x000000"
+    red:     "0xfc4346"
+    green:   "0x50fb7c"
+    yellow:  "0xf0fb8c"
+    blue:    "0x49baff"
+    magenta: "0xfc4cb4"
+    cyan:    "0x8be9fe"
+    white:   "0xededec"
+
+background_opacity: 0.9
+
+# dimensions:
+# columns: 80
+# lines: 25
 
 visual_bell:
   duration: 0

@@ -14,8 +14,8 @@ fi
 
 case "${1}" in
 	acm)
-		PRINTER="ACM"
-		REMOTE="acm.umn.edu"
+		PRINTER="Canon-Canon-MF4800-Series"
+		REMOTE="clubby.acm.umn.edu"
 		;;
 	kona)
 		PRINTER="p6-204"
@@ -27,7 +27,7 @@ case "${1}" in
 esac
 
 if [[ "${2:--}" = "-" ]]; then
-	FILE="$(mktemp)"
+	FILE="$(mktemp --suffix pdf)"
 	TEMP=1
 
 	cat - > "${FILE}"
@@ -36,7 +36,8 @@ else
 	TEMP=0
 fi
 
-REMOTE_FILE="$(ssh "${REMOTE}" mktemp --suffix .pdf)"
+SUFFIX="${FILE##*.}"
+REMOTE_FILE="$(ssh "${REMOTE}" mktemp --suffix ".${SUFFIX}")"
 scp "${FILE}" "${REMOTE}:${REMOTE_FILE}"
 ssh "${REMOTE}" lp -d "${PRINTER}" "${REMOTE_FILE}"
 ssh "${REMOTE}" rm "${REMOTE_FILE}"

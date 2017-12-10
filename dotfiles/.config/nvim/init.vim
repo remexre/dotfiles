@@ -2,6 +2,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'arithran/vim-pizza'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ctrlpvim/ctrlp.vim'
@@ -9,6 +10,8 @@ Plug 'dag/vim2hs', { 'for': 'haskell' }
 Plug 'davidbeckingsale/writegood.vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'flazz/vim-colorschemes'
+Plug 'freitass/todo.txt-vim'
+Plug 'idris-hackers/idris-vim'
 Plug 'jamessan/vim-gnupg'
 Plug 'junegunn/fzf'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
@@ -33,6 +36,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-latex/vim-latex', { 'for': 'tex' }
+Plug 'dbmrq/vim-redacted'
 Plug 'vim-scripts/alex.vim', { 'for': 'alex' }
 Plug 'vim-scripts/happy.vim', { 'for': 'happy' }
 Plug 'wakatime/vim-wakatime'
@@ -44,6 +48,15 @@ syntax enable
 
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:codi#interpreters = {
+		\ 'haskell': {
+			\ 'bin': ['stack', 'ghci']
+		\ },
+        \ 'sml': {
+            \ 'bin': 'sml',
+            \ 'prompt': '^- ',
+        \ }
+	\ }
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -82,12 +95,16 @@ inoremap <f2> <esc>:bn<cr>
 nnoremap <f2> :bn<cr>
 nnoremap <leader><leader> :w<cr>
 inoremap <leader><leader> <esc>:w<cr>
-vnoremap <expr> // 'y/\V'.escape(@",'\').'<cr>'
-
-nmap q <nop>
+" vnoremap <expr> // 'y/\V'.escape(@",'\').'<cr>'
+" inoremap <leader>r <esc>lR
+" inoremap <leader>i <esc>a
+nnoremap <leader>m <esc>:w<cr>:!make<cr>
+nmap <leader>r <Plug>Redact
+vmap <leader>r <Plug>Redact
 
 set background=dark
 set clipboard=unnamedplus
+set colorcolumn=80
 set foldmethod=syntax
 set foldnestmax=1
 set hidden
@@ -101,6 +118,7 @@ set showcmd
 set showmatch
 set showmode
 set tabstop=4
+" set termguicolors
 set title
 
 colorscheme Benokai
@@ -131,6 +149,7 @@ endfunction
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
 autocmd BufRead *.md PencilSoft
+autocmd BufRead * normal zR
 autocmd BufWritePre * :%s/\s\+$//e
 
 augroup SALTPACK

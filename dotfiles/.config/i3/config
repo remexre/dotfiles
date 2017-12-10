@@ -1,5 +1,6 @@
 # The modifier, set to windows-key.
 set $mod Mod4
+set $browser google-chrome-stable
 
 # Global font.
 # font pango:InputMonoNarrow Nerd Font 10
@@ -11,6 +12,7 @@ floating_modifier $mod
 # Start a terminal, possibly floating.
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+Return exec i3-sensible-terminal -name floating-terminal
+bindsym $mod+b exec $browser
 for_window [title="floating-terminal"] floating enable
 
 # Close the current window.
@@ -122,9 +124,9 @@ client.placeholder      #1e1f29 #1e1f29 #ededec #50fb7c   #0c0c0c
 client.background       #1e1f29
 
 # Gaps!
-gaps inner 20
-smart_borders on
-smart_gaps on
+# gaps inner 20
+# smart_borders on
+# smart_gaps on
 
 # Set up DPI, desktop background, locking, and tap-to-click.
 exec --no-startup-id ~/.config/i3/set-monitors.sh

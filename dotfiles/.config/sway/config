@@ -7,8 +7,12 @@ set $down j
 set $up k
 set $right l
 
-# Your preferred terminal emulator
+# Your preferred terminal emulator and browser
+set $browser google-chrome-stable
 set $term urxvt
+set $term_floating urxvt -T floating-terminal
+# set $term alacritty
+# set $term_floating alacritty -t floating-terminal
 
 ### Output configuration
 #
@@ -32,15 +36,18 @@ input "0:0:Atmel_maXTouch_Touchpad" {
 #
     # start a terminal
     bindsym $mod+Return exec $term
-    bindsym $mod+Shift+Return exec $term -name floating-terminal
+    bindsym $mod+Shift+Return exec $term_floating
 	for_window [title="floating-terminal"] floating enable
+
+	# start a browser window
+    bindsym $mod+b exec $browser
 
     # kill focused window
     bindsym $mod+Shift+q kill
 
     # start your launcher
-    bindsym $mod+d exec --no-startup-id passmenu
-    bindsym $mod+space exec --no-startup-id rofi -show run -levenshtein-sort
+    bindsym $mod+d exec passmenu
+    bindsym $mod+space exec rofi -show run -levenshtein-sort
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -141,6 +148,11 @@ input "0:0:Atmel_maXTouch_Touchpad" {
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
 #
+# Screenshots:
+#
+    bindsym $mod+p exec swaygrab -f ~/Pictures/Screenshots/$(date +%F-%T).png
+    bindsym $mod+shift+p exec swaygrab ~/Pictures/Screenshots/$(date +%F-%T).png
+#
 # Resizing containers:
 #
 mode "resize" {
@@ -184,12 +196,6 @@ bar {
 
 include /etc/sway/config.d/*
 
-# Font
-font pango:PragmataPro Nerd Font 18
-
-# Set the DPI for X applications
-exec xrdb -merge ~/.Xresources
-
 # Color Scheme
 client.focused          #1e1f29 #1e1f29 #ebece6 #50fb7c   #1e1f29
 client.focused_inactive #1e1f29 #1e1f29 #555555 #50fb7c   #1e1f29
@@ -197,3 +203,29 @@ client.unfocused        #1e1f29 #1e1f29 #555555 #50fb7c   #1e1f29
 client.urgent           #1e1f29 #1e1f29 #fc4346 #50fb7c   #900000
 client.placeholder      #1e1f29 #1e1f29 #ededec #50fb7c   #0c0c0c
 client.background       #1e1f29
+
+# Font
+font pango:Go Mono Nerd Font 18
+# font pango:PragmataPro Nerd Font 18
+
+# Gaps
+# gaps 20
+# smart_gaps on
+
+# Keybindings
+bindsym F6 exec --no-startup-id light -U 10
+bindsym F7 exec --no-startup-id light -A 10
+bindsym F8 exec --no-startup-id ~/.local/bin/media-helper.sh mute
+bindsym F9 exec --no-startup-id ~/.local/bin/media-helper.sh volume-down
+bindsym F10 exec --no-startup-id ~/.local/bin/media-helper.sh volume-up
+
+# Set the DPI for X applications
+exec xrdb -merge ~/.Xresources
+
+# Start gestures support.
+exec libinput-gestures-setup start
+
+# Floating windows
+for_window [class="Display"] floating enable
+for_window [class="raytracer"] floating enable
+for_window [id="qemu-system-.*"] floating enable
