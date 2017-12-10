@@ -123,11 +123,6 @@ client.urgent           #1e1f29 #1e1f29 #fc4346 #50fb7c   #900000
 client.placeholder      #1e1f29 #1e1f29 #ededec #50fb7c   #0c0c0c
 client.background       #1e1f29
 
-# Gaps!
-# gaps inner 20
-# smart_borders on
-# smart_gaps on
-
 # Set up DPI, desktop background, locking, and tap-to-click.
 exec --no-startup-id ~/.config/i3/set-monitors.sh
 exec --no-startup-id feh --bg-fill /usr/share/backgrounds/snazzy_2560_1700.png

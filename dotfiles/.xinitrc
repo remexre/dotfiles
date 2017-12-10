@@ -1,5 +1,6 @@
 #!/bin/sh
 
+xrdb -merge .Xresources
 if [[ -e /sys/devices/virtual/dmi/id/product_name ]]; then
 	if [[ "$(< /sys/devices/virtual/dmi/id/product_name)" = "Samus" ]]; then
 		xrdb -merge .hidpi.d/.Xresources
@@ -12,5 +13,4 @@ export GNOME_KEYRING_CONTROL
 export SSH_AUTH_SOCK
 
 # Start i3.
-# exec i3
-exec xfce4-session
+exec i3
