@@ -9,3 +9,4 @@ if [[ -x "${CONFIG_FILE}" ]]; then
 else
 	echo "No set-monitors.sh found: ${CONFIG_FILE}"
 fi
+feh --bg-fill /usr/share/backgrounds/snazzy_2560_1700.png

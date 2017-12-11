@@ -17,9 +17,6 @@ font pango:Go Mono Nerd Font 11
 # Used for dragging floating windows.
 floating_modifier $mod
 
-# Start the browser.
-bindsym $mod+b exec $browser
-
 # Start a terminal, possibly floating.
 bindsym $mod+Return exec $terminal
 bindsym $mod+Shift+Return exec $terminal_floating
@@ -136,7 +133,6 @@ client.background       #1e1f29
 
 # Set up DPI, desktop background, locking, and tap-to-click.
 exec --no-startup-id ~/.config/i3/set-monitors.sh
-exec --no-startup-id feh --bg-fill /usr/share/backgrounds/snazzy_2560_1700.png
 exec --no-startup-id xautolock -time 10 -locker "i3lock -i /usr/share/backgrounds/snazzy_2560_1700.png"
 exec --no-startup-id xinput set-prop 9 274 1
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -148,11 +144,7 @@ exec --no-startup-id libinput-gestures-setup start
 # Applets and background applications.
 exec --no-startup-id dunst
 exec --no-startup-id kalu
-exec --no-startup-id haguichi --hidden
-exec --no-startup-id nm-applet
 exec --no-startup-id env KEYBASE_START_UI=hideWindow run_keybase
-exec --no-startup-id rescuetime
-exec --no-startup-id udiskie -2at
 
 # Keybindings.
 bindsym $mod+d exec --no-startup-id passmenu
