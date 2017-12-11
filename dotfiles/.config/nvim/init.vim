@@ -2,7 +2,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'arithran/vim-pizza'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ctrlpvim/ctrlp.vim'
@@ -32,6 +31,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -39,6 +39,7 @@ Plug 'vim-latex/vim-latex', { 'for': 'tex' }
 Plug 'dbmrq/vim-redacted'
 Plug 'vim-scripts/alex.vim', { 'for': 'alex' }
 Plug 'vim-scripts/happy.vim', { 'for': 'happy' }
+Plug 'vim-scripts/JavaDecompiler.vim'
 Plug 'wakatime/vim-wakatime'
 
 call plug#end()
@@ -69,7 +70,7 @@ let g:LanguageClient_serverCommands = {
 	\ }
 let g:markdown_fold_style = 'nested'
 let g:rustfmt_autosave = 1
- let g:tagbar_type_rust = {
+let g:tagbar_type_rust = {
 	\ 'ctagstype' : 'rust',
 	\ 'kinds' : [
 		\ 'T:types,type definitions',
@@ -118,7 +119,6 @@ set showcmd
 set showmatch
 set showmode
 set tabstop=4
-" set termguicolors
 set title
 
 colorscheme Benokai

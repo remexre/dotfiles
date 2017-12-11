@@ -1,7 +1,7 @@
-*.font: xft:Go Mono Nerd Font:pixelsize=28:antialias=true,xft:PragmataPro Nerd Font:pixelsize=28:antialias=true
-*.boldFont: xft:Go Mono Nerd Font:pixelsize=28:antialias=true,xft:PragmataPro Nerd Font:pixelsize=28:antialias=true
-*.italicFont: xft:Go Mono Nerd Font:pixelsize=28:antialias=true,xft:PragmataPro Nerd Font:pixelsize=28:antialias=true
-*.boldItalicFont: xft:Go Mono Nerd Font:pixelsize=28:antialias=true,xft:PragmataPro Nerd Font:pixelsize=28:antialias=true
+*.font: xft:Go Mono Nerd Font:pixelsize=16:antialias=true,xft:PragmataPro Nerd Font:pixelsize=16:antialias=true
+*.boldFont: xft:Go Mono Nerd Font:pixelsize=16:antialias=true,xft:PragmataPro Nerd Font:pixelsize=16:antialias=true
+*.italicFont: xft:Go Mono Nerd Font:pixelsize=16:antialias=true,xft:PragmataPro Nerd Font:pixelsize=16:antialias=true
+*.boldItalicFont: xft:Go Mono Nerd Font:pixelsize=16:antialias=true,xft:PragmataPro Nerd Font:pixelsize=16:antialias=true
 
 ! *.font: xft:InputMonoNarrow Nerd Font:pixelsize=32:antialias=true,xft:PragmataPro Nerd Font:pixelsize=32:antialias=true
 ! *.boldFont: xft:InputMonoNarrow Nerd Font:pixelsize=32:antialias=true,xft:PragmataPro Nerd Font:pixelsize=32:antialias=true

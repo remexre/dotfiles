@@ -2,16 +2,27 @@
 set $mod Mod4
 set $browser google-chrome-stable
 
+# Applications
+set $browser google-chrome-stable
+set $terminal urxvt
+set $terminal_floating urxvt -name floating-terminal
+# set $terminal alacritty
+# set $terminal_floating alacritty -t floating-terminal
+
 # Global font.
+font pango:Go Mono Nerd Font 11
 # font pango:InputMonoNarrow Nerd Font 10
-font pango:PragmataPro Nerd Font 10
+# font pango:PragmataPro Nerd Font 10
 
 # Used for dragging floating windows.
 floating_modifier $mod
 
+# Start the browser.
+bindsym $mod+b exec $browser
+
 # Start a terminal, possibly floating.
-bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Shift+Return exec i3-sensible-terminal -name floating-terminal
+bindsym $mod+Return exec $terminal
+bindsym $mod+Shift+Return exec $terminal_floating
 bindsym $mod+b exec $browser
 for_window [title="floating-terminal"] floating enable
 
@@ -149,8 +160,8 @@ bindsym $mod+space exec --no-startup-id rofi -show run -levenshtein-sort
 bindsym $mod+Tab exec --no-startup-id rofi -show window -m 0
 bindsym $mod+p exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%F-%T).png -s -c 0.52,0.6,0,1"
 bindsym $mod+shift+p exec --no-startup-id "maim ~/Pictures/Screenshots/$(date +%F-%T).png"
-bindsym F6  exec --no-startup-id xbacklight -dec 10
-bindsym F7  exec --no-startup-id xbacklight -inc 10
+# bindsym F6  exec --no-startup-id xbacklight -dec 10
+# bindsym F7  exec --no-startup-id xbacklight -inc 10
 bindsym F8  exec --no-startup-id ~/.local/bin/media-helper.sh mute
 bindsym F9  exec --no-startup-id ~/.local/bin/media-helper.sh volume-down
 bindsym F10 exec --no-startup-id ~/.local/bin/media-helper.sh volume-up
@@ -167,9 +178,10 @@ bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 10
 bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 10
 
 # Make QEMU and VirtualBox always be floating.
-for_window [class="VirtualBox"] floating enable
+for_window [class="Display"] floating enable
 for_window [title="QEMU"] floating enable
+for_window [class="Pinentry"] floating enable
 
 # Play Akshay Videos
-bindsym XF86Tools exec mplayer ~/www/tmp/VID_20170708_020203.mp4 ~/www/tmp/VID_20170708_020444.mp4
-bindsym Shift+XF86Tools exec mkchromecast --video --source-url https://home.remexre.xyz/~nathan/tmp/VID_20170708_020203.mp4
+bindsym XF86Tools exec mplayer ~/www/.scrub-ta/VID_20170708_020203.mp4 ~/www/tmp/VID_20170708_020444.mp4
+bindsym Shift+XF86Tools exec mkchromecast --video --source-url https://home.remexre.xyz/~nathan/tmp/.scrub-ta/VID_20170708_020203.mp4

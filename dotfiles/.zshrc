@@ -25,7 +25,7 @@ command_exists exa && alias ls="exa";
 command_exists hexdump && alias hd="hexdump -C";
 command_exists julia && alias j="julia";
 command_exists nvim && alias vim="nvim"
-command_exists pygmentize && alias c="pygmentize -g";
+command_exists pygmentize && c() { for f in $@; do pygmentize -g $f; done }
 command_exists rg && alias findtodo="rg TODO";
 command_exists thefuck && eval $(thefuck --alias)
 command_exists trash && alias rm="trash";
@@ -51,3 +51,4 @@ function oftb-compile-and-oftcesk-run() {
 
 # OPAM configuration
 [ -f /home/nathan/.opam/opam-init/init.zsh ] && . /home/nathan/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+[[ -x /etc/profile.d/emscripten.sh ]]; source /etc/profile.d/emscripten.sh
