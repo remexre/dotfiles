@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/usr/lib/swipl-7.6.4/xpce'
+let g:netrw_dirhist_2='/usr/lib/swipl-7.6.4'
+let g:netrw_dirhist_3='/usr/lib/swipl-7.6.4/include'
+let g:netrw_dirhist_4='/home/nathan/Projects/swipl-rs/target/debug/build/swipl-sys-fc6c8a7b57c163fc/out/swipl-7.6.4/src/config'
+let g:netrw_dirhist_5='/home/nathan/Projects/unix-classes-lesson-2/.git'
+let g:netrw_dirhist_6='/home/nathan/.config/alacritty'

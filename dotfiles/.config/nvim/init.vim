@@ -2,10 +2,13 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'airblade/vim-gitgutter'
+Plug 'arithran/vim-pizza'
 Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 Plug 'cespare/vim-toml', { 'for': 'toml' }
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'dag/vim2hs', { 'for': 'haskell' }
+Plug 'dbmrq/vim-redacted'
 Plug 'davidbeckingsale/writegood.vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries', 'for': 'go' }
 Plug 'flazz/vim-colorschemes'
@@ -16,7 +19,9 @@ Plug 'junegunn/fzf'
 Plug 'junegunn/goyo.vim', { 'for': 'markdown' }
 Plug 'junegunn/limelight.vim', { 'for': 'markdown' }
 Plug 'kchmck/vim-coffee-script', { 'for': 'coffeescript' }
+Plug 'let-def/vimbufsync'
 Plug 'majutsushi/tagbar', { 'on': 'TagbarToggle' }
+Plug 'mattn/emmet-vim'
 Plug 'metakirby5/codi.vim'
 Plug 'mhinz/vim-startify'
 Plug 'msteinert/vim-prolog', { 'for': 'prolog' }
@@ -24,23 +29,30 @@ Plug 'mxw/vim-jsx', { 'for': 'javascript' }
 Plug 'nelstrom/vim-markdown-folding', { 'for': 'markdown' }
 Plug 'oftlisp/vim-oftlisp', { 'for': 'oftlisp' }
 Plug 'pangloss/vim-javascript', { 'for': 'javascript' }
+Plug 'peter-edge/vim-capnp', { 'for': 'capnp' }
 Plug 'purescript-contrib/purescript-vim', { 'for': 'purescript' }
+Plug 'reasonml-editor/vim-reason-plus'
 Plug 'reedes/vim-pencil'
 Plug 'reedes/vim-wordy'
+Plug 'remexre/datalog', { 'rtp': 'misc/vim' }
 Plug 'rust-lang/rust.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tikhomirov/vim-glsl'
+Plug 'the-lambda-church/coquille', { 'branch': 'pathogen-bundle', 'for': 'coq' }
+Plug 'tpope/vim-db'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-markdown'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-latex/vim-latex', { 'for': 'tex' }
-Plug 'dbmrq/vim-redacted'
 Plug 'vim-scripts/alex.vim', { 'for': 'alex' }
+Plug 'vim-scripts/DrawIt'
 Plug 'vim-scripts/happy.vim', { 'for': 'happy' }
 Plug 'vim-scripts/JavaDecompiler.vim'
 Plug 'wakatime/vim-wakatime'
+Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
 
 call plug#end()
 
@@ -53,11 +65,15 @@ let g:codi#interpreters = {
 		\ 'haskell': {
 			\ 'bin': ['stack', 'ghci']
 		\ },
-        \ 'sml': {
-            \ 'bin': 'sml',
-            \ 'prompt': '^- ',
-        \ }
+		\ 'ocaml': {
+			\ 'bin': ['ocaml', '-safe-string']
+		\ },
+		\ 'sml': {
+			\ 'bin': 'sml',
+			\ 'prompt': '^- ',
+		\ }
 	\ }
+let g:codi#log = '/tmp/codi.log'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
@@ -66,7 +82,9 @@ let g:haskell_conceal = 0
 let g:jsx_ext_required = 0
 let g:LanguageClient_autoStart = 1
 let g:LanguageClient_serverCommands = {
-	\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+	\ 'ocaml': ['ocaml-language-server', '--stdio'],
+	\ 'reason': ['ocaml-language-server', '--stdio'],
+	\ 'rust': ['rls'],
 	\ }
 let g:markdown_fold_style = 'nested'
 let g:rustfmt_autosave = 1
@@ -102,6 +120,12 @@ inoremap <leader><leader> <esc>:w<cr>
 nnoremap <leader>m <esc>:w<cr>:!make<cr>
 nmap <leader>r <Plug>Redact
 vmap <leader>r <Plug>Redact
+nmap <leader>R <Plug>Redact!
+vmap <leader>R <Plug>Redact!
+
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<cr>
+nnoremap <silent> gf :call LanguageClient_textDocument_formatting()<cr>
+nnoremap <silent> <cr> :call LanguageClient_textDocument_hover()<cr>
 
 set background=dark
 set clipboard=unnamedplus
@@ -121,8 +145,9 @@ set showmode
 set tabstop=4
 set title
 
-colorscheme Benokai
-" colorscheme default
+" colorscheme badwolf
+" colorscheme Benokai
+colorscheme default
 
 if has("gui")
 	set guifont=PT\ Mono\ Nerd\ Font\ 14
@@ -169,3 +194,7 @@ augroup SALTPACK
 augroup end
 
 :set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" execute "set rtp^=" . g:opamshare . "/ocp-indent/vim"
