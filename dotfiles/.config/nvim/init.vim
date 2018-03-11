@@ -50,7 +50,6 @@ Plug 'vim-latex/vim-latex', { 'for': 'tex' }
 Plug 'vim-scripts/alex.vim', { 'for': 'alex' }
 Plug 'vim-scripts/DrawIt'
 Plug 'vim-scripts/happy.vim', { 'for': 'happy' }
-Plug 'vim-scripts/JavaDecompiler.vim'
 Plug 'wakatime/vim-wakatime'
 Plug 'zchee/deoplete-go', { 'do': 'make', 'for': 'go' }
 
@@ -131,7 +130,7 @@ set background=dark
 set clipboard=unnamedplus
 set colorcolumn=80
 set foldmethod=syntax
-set foldnestmax=1
+set foldnestmax=2
 set hidden
 set modeline
 set mouse=a
@@ -143,7 +142,9 @@ set showcmd
 set showmatch
 set showmode
 set tabstop=4
+" set termguicolors
 set title
+set updatetime=100
 
 " colorscheme badwolf
 " colorscheme Benokai
